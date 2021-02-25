@@ -1,0 +1,30 @@
+.container {
+  margin: 20px auto;
+  width: 70%;
+}
+
+.auth-form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+    span {
+      text-align: center;
+    }
+
+    input {
+      width: 200px;
+    }
+  }
+}
+
+.danger {
+  color: red;
+  font-size: 14px;
+}

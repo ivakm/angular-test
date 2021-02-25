@@ -1,0 +1,32 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="auth()" class="auth-form">
+
+    <label>
+      <span>Логін*</span>
+      <input type="text" formControlName="email" placeholder="someEmail@ukr.net">
+      <span *ngIf="email.touched && email.hasError('require')" class="danger">Введіть логін</span>
+      <span *ngIf="email.touched && email.hasError('EmailValidator')" class="danger">
+        Логін введено не корректно
+      </span>
+      <span *ngIf="email.touched && email.errors?.maxlength" class="danger">
+        Максимальна кількість символів 30, введено - {{email.value.length}}
+      </span>
+    </label>
+    <label>
+      <span>Пароль*</span>
+      <input type="password" formControlName="password">
+      <span *ngIf="password.touched && password.hasError('require')" class="danger">
+        Введіть пароль
+      </span>
+      <span *ngIf="password.touched && password.errors?.maxlength || password.errors?.minlength" class="danger">
+        Пароль повинен бути більше 6 символів та менше 16. Символів - {{password.value.length}}
+      </span>
+    </label>
+    <label *ngIf="email.touched && email.valid && password.touched && password.valid">
+      <span>4pin*</span>
+      <input type="number" formControlName="pin" maxlength="4">
+    </label>
+
+    <button type="submit" [disabled]="form.invalid">Увійти</button>
+  </form>
+</div>
