@@ -15,7 +15,6 @@ import { iJobs } from "../../models/jobs/jobs.model";
 export class MainComponent implements OnInit, OnDestroy {
   form: FormGroup;
   pageNumber = 1;
-  showRecordsOnPage = 1;
   jobs: iJobs[] = [];
   private _unsubscribe = new Subject();
 
@@ -55,7 +54,7 @@ export class MainComponent implements OnInit, OnDestroy {
     this._unsubscribe.complete();
   }
 
-  logout() {
+  logout(): void {
     this._currentUser.logout();
   }
 
@@ -86,7 +85,7 @@ export class MainComponent implements OnInit, OnDestroy {
     for(const key in data) {
       requestStr += key + '=' + data[key] + '&';
     }
-    return requestStr.slice(0, -1)
+    return requestStr.slice(0, -1);
   }
 
 }

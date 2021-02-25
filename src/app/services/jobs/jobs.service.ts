@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { EMPTY, Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 
@@ -16,6 +16,7 @@ export class JobsService {
   }
 
   getJobs(data: string): Observable<any> {
+    // тут повинен бути метод POST
     return this._http.get(this.URL_SEARCH_JOBS + data)
       .pipe(
         catchError(e => {

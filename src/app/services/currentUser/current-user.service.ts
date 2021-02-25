@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from "ngx-cookie";
 import { iUserData, ModelUser } from "../../models/user/user.model";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentUserService {
-  dataForAccess = {
-    email: 'test@ukr.net',
-    password: '123456',
-    pin: 1111
-  }
   _currentUser: ModelUser;
 
   constructor(private _cookieService: CookieService) {
@@ -53,7 +49,7 @@ export class CurrentUserService {
   checkEqualData(userInfo: iUserData): boolean {
     let isEqual = true;
     for(const key in userInfo) {
-      if(!(userInfo[key] === this.dataForAccess[key])) {
+      if(!(userInfo[key] === environment.dataForAccess[key])) {
         isEqual = false;
         break;
       }
