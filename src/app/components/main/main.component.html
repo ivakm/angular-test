@@ -5,3 +5,30 @@
     </button>
   </mat-toolbar>
 </div>
+<div class="container">
+
+  <form [formGroup]="form">
+    <label>
+      <span>Пошук вакансій</span>
+      <input type="text" formControlName="search">
+    </label>
+    <label>
+      <span>Введіть кількість постів на сторінці</span>
+      <input type="number" formControlName="countRecords">
+    </label>
+  </form>
+
+  <div class="table-container">
+
+    <div *ngFor="let value of jobs | slice:0:countRecords.value">
+
+        <div>
+          <b>Компанія - </b> <span>{{value.company}}</span>
+        </div>
+        <div [innerHTML]="value.description"></div>
+        <div [innerHTML]="value.how_to_apply"></div>
+
+    </div>
+
+  </div>
+</div>

@@ -12,7 +12,8 @@ import { Router } from "@angular/router";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthComponent implements OnInit {
-  form: FormGroup
+  form: FormGroup;
+  showPass = false;
 
   constructor(
     private _fb: FormBuilder,

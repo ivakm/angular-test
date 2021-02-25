@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="auth()" class="auth-form">
+  <form [formGroup]="form" class="auth-form">
 
     <label>
       <span>Логін*</span>
@@ -14,7 +14,10 @@
     </label>
     <label>
       <span>Пароль*</span>
-      <input type="password" formControlName="password">
+      <div>
+        <input [type]="showPass ? 'text' : 'password'" formControlName="password" class="password-input">
+        <button (click)="showPass = !showPass">{{showPass ? 'Сховати пароль' : 'Показати пароль'}}</button>
+      </div>
       <span *ngIf="password.touched && password.hasError('require')" class="danger">
         Введіть пароль
       </span>
@@ -27,6 +30,6 @@
       <input type="number" formControlName="pin" maxlength="4">
     </label>
 
-    <button type="submit" [disabled]="form.invalid">Увійти</button>
+    <button type="submit" [disabled]="form.invalid" (click)="auth()">Увійти</button>
   </form>
 </div>
