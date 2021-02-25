@@ -51,6 +51,16 @@ export class CurrentUserService {
   }
 
   checkEqualData(userInfo: iUserData): boolean {
-    return JSON.stringify(this.dataForAccess) === JSON.stringify(userInfo);
+    let isEqual = true;
+    for(const key in userInfo) {
+      if(!(userInfo[key] === this.dataForAccess[key])) {
+        isEqual = false;
+        break;
+      }
+    }
+    return isEqual;
+
+    // Грає роль порядок полів
+    // return JSON.stringify(this.dataForAccess) === JSON.stringify(userInfo);
   }
 }
